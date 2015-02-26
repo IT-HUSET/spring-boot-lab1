@@ -55,7 +55,7 @@ To update a Spring Boot application, you only need to update the version inthe `
 1. Either just to a System.out to output the required salution. For something more fancy, define a Spring bean with the message.
 Remember, that your Application.class now is also a Spring bean (it is annotated with `@Configuration`)!
 1. On the command line, execute `mvn package`.
-1. Run the executable JAR-file
+1. Run the executable JAR-file.
 
 If you see your message, you are finished! Now go to part 2 of this lab by checking out the **part2**-branch.
 
