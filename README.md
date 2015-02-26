@@ -61,7 +61,41 @@ Remember, that your Application.class now is also a Spring bean (it is annotated
 If you see your message, you are finished! Now go to part 2 of this lab by checking out the **part2**-branch.
 
 #Part 2 - Lab assignment
-Available in the next Git branch.
+Nice work on the previous assignment operative.
+
+1. We need a starter POM for our REST API. In Spring Framework this is handled by Web MVC.
+Take a look here: http://docs.spring.io/spring-boot/docs/1.2.1.RELEASE/reference/htmlsingle/#using-boot-starter-poms
+See anything we might use as a starter POM for web and REST? Add it to `pom.xml`! And remember, do not add a version to the
+dependency, let Spring Boot handle that.
+1. Take a moment to study and think about all the new (managed) dependencies Spring Boot pulled in.
+1. We need a simple POJO which will be serialized to JSON. Create a class, in any package under Application.class.
+It should have two fields, `id` and `data`.
+1. We also need to create a controller class to serve the JSON data. Create a new class, in a package under Application.class.
+Use the following annotations:
+```
+@RestController
+public class XXX {
+```
+```
+@RequestMapping("/myrest")
+public MyPojo getPojoStuff() {
+```
+1. Return your POJO in the method annotated with `@RequestMapping`.
+1. Use Maven to package and run the JAR-file like you did in the first part.
+1. Wow, a server is started! Spot in the log output which port it is bound to.
+1. Fire up your browser and navigate to `http:/localhost:<port>/myrest`.
+If you see JSON data in the browser in the format of the POJO you created, then Great Success!
+1. Spring Boot handles properties in a smart and easy way. See for instance:
+  * http://docs.spring.io/spring-boot/docs/1.2.1.RELEASE/reference/htmlsingle/#boot-features-external-config
+  * http://docs.spring.io/spring-boot/docs/1.2.1.RELEASE/reference/htmlsingle/#howto-properties-and-configuration
+1. Without changing any code or re-package, lets start the application on another port.
+1. Shutdown the currently running app, and start it with `java -jar xxx.jar --server.port=<some port>`
+
+We have barely scratched the surface on how Spring Boot simplifies handling properties and configuration. It is easy to define default config
+in property files and then override them when needed without any recompilation.
+The reference document nicely describe how this work so be sure to read it.
+
+On to the last part of this lab!
 
 #Part 3 - Lab assignment
 Available in the next Git branch.
