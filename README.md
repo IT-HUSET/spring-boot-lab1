@@ -1,7 +1,7 @@
 #IT-HUSET Spring Boot 101
 Welcome to IT-HUSET (http://www.it-huset.se) Spring Boot lab session 1!
 
-This lab session will teach you to set up an end-to-end Spring Boot application that expose a PostgresQL database with a REST API.
+This lab session will teach you to set up an end-to-end Spring Boot application that expose a PostgreSQL database with a REST API.
 
 The lab contains three parts, and different Git branches build upon the work in a previous part, so if you are stuck, you can always checkout the
 next branch. And look at the solution.
@@ -22,7 +22,7 @@ In this part of the lab we add the required dependencies to build a REST API. We
 Git branch **part3** `git checkout -b origin/part1`
 
 In the last part of the lab, we add a unit test to our app, we also add required dependencies for Spring Data JPA.
-Finally we should be able to read data from a PostgresQL database and expose it with our previously build REST API.
+Finally we should be able to read data from a PostgreSQL database and expose it with our previously build REST API.
 
 ##Solution
 Git branch **solution** `git checkout -b origin/solution`
@@ -98,4 +98,64 @@ The reference document nicely describe how this work so be sure to read it.
 On to the last part of this lab!
 
 #Part 3 - Lab assignment
-Available in the next Git branch.
+This is the last part of this lab. Will you make to the end?
+
+1. First of we are going to set up unit testing and later integration testing for the database connection.
+The `pom.xml` has already been updated with the required starter-POM for testing support. Check it out!
+1. A new unit test has also been created which test the controller in the Spring Boot application. This relies on the MockMvc-class in
+Spring Framework.
+1. Change the URL to the controller in the unit test, so you see the JSON data returned from the previously created controller as output
+when the test is executed. It should look something like this:
+```
+2015-02-27 13:07:20.217  INFO 9489 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 11 ms
+{"id":5,"data":"Hello IT-HUSET!"}
+```
+1. Great now you have the basic structure ready so you can perform unit tests. You are going to use it to test the database setup.
+1. No for the required dependencies for database access using Spring data JPA. The deendency to add to your `pom.xml` is:
+```
+spring-boot-starter-data-jpa
+```
+1. We also need a PostgreSQL-driver. Add this dependency:
+```
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>9.3-1103-jdbc4</version>
+</dependency>
+``
+1. Now under `srcmain/resources`, add a file named `application.properties`. Add thoe following properties to it:
+```
+spring.datasource.url=jdbc:postgresql://host:port/database
+spring.datasource.username=dbuser
+spring.datasource.password=dbpass
+spring.datasource.driver-class-name=org.postgresql.Driver
+```
+1. Remember that properties can be overridden on the command line. So after you packaged your app, you can for example
+change the url by adding the parameter `--spring.datasource.url=something_else` when you start the application.
+1. Ask your instructor for connection strings to add to the file above.
+1. Remember the POJO you created. Lets turn that into an JPA entity.
+1. Use the annotations below o the class. The properties should be named `id` and `ata`.
+```
+@Entity //on the class
+@Table( name="ithuset") //on the class
+@Id //On the property named id.
+```
+1. Because of autoconfiguration, we now have a proper DataSource and a JdbcTemplate. But for this task we are using Spring data JPA
+which also gives us a LocalContainerEntityManagerFactoryBean. Now time for some magic. At the following interface
+to a package below `Application.class`:
+  ```
+  @Component
+  public interface PojoRepository extends JpaRepository<YourPojoName, Integer> {
+  }
+  ```
+1. Inject (with `@Autowired`) the interface in both the test class and the controller.
+1. Use one of the find*-methods in the interface to retrieve data from the database in a new test case. When
+you successfully managed to read database data, then move on to the last step. You can either at a test method in the
+existing `MyControllerTest.java` or create a completely new test class.
+1. In your controller, use the Repository to query the database and return the data either as a List or as a single object.
+Compile and package your app, start it and navigate in a browser to the same URL as before. If you see the database data, then you
+have successfully completed this lab!
+
+Now have a beer and lean back. If you are want, you can checkout the branch "solution" to see my take of this.
+
+ Congratulations!!!
