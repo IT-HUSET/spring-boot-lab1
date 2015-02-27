@@ -9,7 +9,7 @@ next branch. And look at the solution.
 The parts are:
 
 ##Part 1, Basic code structure and dependencies.
-Git branch **master**, git clone ...`
+Git branch **master**. This is the starting point of the lab. By cloning this repository from Github you will checkout the master branch by default.
 
 In this part of the lab we create the basic Spring Boot code structure. We also make sure we can package and run our app.
 
