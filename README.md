@@ -56,6 +56,7 @@ To update a Spring Boot application, you only need to update the version inthe `
 Remember, that your Application.class now is also a Spring bean (it is annotated with `@Configuration`)!
 1. On the command line, execute `mvn package`.
 1. Run the executable JAR-file.
+1. Notice the size of the JAR-file. You can also unpack it and study its contents. What do you think?
 
 If you see your message, you are finished! Now go to part 2 of this lab by checking out the **part2**-branch.
 
