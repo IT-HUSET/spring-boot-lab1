@@ -111,7 +111,7 @@ when the test is executed. It should look something like this:
 {"id":5,"data":"Hello IT-HUSET!"}
 ```
 1. Great now you have the basic structure ready so you can perform unit tests. You are going to use it to test the database setup.
-1. No for the required dependencies for database access using Spring data JPA. The deendency to add to your `pom.xml` is:
+1. Now for the required dependencies for database access using Spring data JPA. The dependency to add to your `pom.xml` is:
 ```
 spring-boot-starter-data-jpa
 ```
@@ -120,21 +120,27 @@ spring-boot-starter-data-jpa
 <dependency>
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
-    <version>9.3-1103-jdbc4</version>
+    <version>9.3-1103-jdbc3</version>
 </dependency>
-``
-1. Now under `srcmain/resources`, add a file named `application.properties`. Add thoe following properties to it:
 ```
-spring.datasource.url=jdbc:postgresql://host:port/database
-spring.datasource.username=dbuser
-spring.datasource.password=dbpass
+1. Now under `srcmain/resources`, add a file named `application.properties`. Add the following properties to it:
+```
+spring.datasource.url=jdbc:postgresql://ec2-54-243-229-57.compute-1.amazonaws.com:5432/<database>?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+spring.datasource.username=
+spring.datasource.password=
 spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.max-active=2
+spring.datasource.max-idle=2
+spring.datasource.min-idle=1
+spring.datasource.initial-size=1
+spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults=false
 ```
 1. Remember that properties can be overridden on the command line. So after you packaged your app, you can for example
 change the url by adding the parameter `--spring.datasource.url=something_else` when you start the application.
 1. Ask your instructor for connection strings to add to the file above.
 1. Remember the POJO you created. Lets turn that into an JPA entity.
-1. Use the annotations below o the class. The properties should be named `id` and `ata`.
+1. Use the annotations below o the class. The properties should be named `id` and `data`.
 ```
 @Entity //on the class
 @Table( name="ithuset") //on the class
@@ -158,4 +164,4 @@ have successfully completed this lab!
 
 Now have a beer and lean back. If you are want, you can checkout the branch "solution" to see my take of this.
 
- Congratulations!!!
+Congratulations!!!
