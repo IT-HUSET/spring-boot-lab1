@@ -1,7 +1,15 @@
 package se.ithuset.pojos;
 
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ithuset")
 public class DataStuff {
 
+    @Id
     private int id;
     private String data;
 
