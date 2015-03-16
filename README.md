@@ -44,7 +44,7 @@ The added Spring Boot plugin let us package the application as a standalone exec
 </dependency>
 ```
 1. From the previous step you can see that several dependencies was pulled in. The versions are defined in the parent POM.
-To update a Spring Boot application, you only need to update the version inthe `<parent></parent>` element.
+To update a Spring Boot application, you only need to update the version in the `<parent></parent>` element.
 1. Now time for the application entrypoint. Open `Application.java`and add three annotations to it:
 ```
 @Configuration
