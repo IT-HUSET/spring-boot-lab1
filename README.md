@@ -123,7 +123,7 @@ spring-boot-starter-data-jpa
     <version>9.3-1103-jdbc3</version>
 </dependency>
 ```
-1. Now under `srcmain/resources`, add a file named `application.properties`. Add the following properties to it:
+1. Now under `src/main/resources`, add a file named `application.properties`. Add the following properties to it:
 ```
 spring.datasource.url=jdbc:postgresql://ec2-54-243-229-57.compute-1.amazonaws.com:5432/<database>?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
 spring.datasource.username=
