@@ -19,7 +19,7 @@ Git branch **part2**, `git checkout -b origin/part2`
 In this part of the lab we add the required dependencies to build a REST API. We also experiment with the externalized configuration.
 
 ##Part 3, Connecting to a database and reading data.
-Git branch **part3** `git checkout -b origin/part1`
+Git branch **part3** `git checkout -b origin/part3`
 
 In the last part of the lab, we add a unit test to our app, we also add required dependencies for Spring Data JPA.
 Finally we should be able to read data from a PostgreSQL database and expose it with our previously build REST API.
@@ -43,9 +43,9 @@ The added Spring Boot plugin let us package the application as a standalone exec
 <artifactId>spring-boot-starter</artifactId>
 </dependency>
 ```
-1. From the previous step you can see tat several dependencies was pulled in. The versions are defined in the parent POM.
-To update a Spring Boot application, you only need to update the version inthe `<parent></parent>` element.
-1. Now time for the application entrypoint. Open `Application.java`and add three annotations to it:
+1. From the previous step you can see that several dependencies was pulled in. The versions are defined in the parent POM.
+To update a Spring Boot application, you only need to update the version in the `<parent></parent>` element.
+1. Now time for the application entrypoint. Open `Application.java` and add three annotations to it:
 ```
 @Configuration
 @ComponentScan
