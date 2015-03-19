@@ -19,7 +19,7 @@ Git branch **part2**, `git checkout -b origin/part2`
 In this part of the lab we add the required dependencies to build a REST API. We also experiment with the externalized configuration.
 
 ##Part 3, Connecting to a database and reading data.
-Git branch **part3** `git checkout -b origin/part1`
+Git branch **part3** `git checkout -b origin/part3`
 
 In the last part of the lab, we add a unit test to our app, we also add required dependencies for Spring Data JPA.
 Finally we should be able to read data from a PostgresQL database and expose it with our previously build REST API.
