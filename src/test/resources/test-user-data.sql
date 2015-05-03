@@ -1,0 +1,1 @@
+INSERT INTO ithuset (id, data) VALUES (1, 'hejsan');
